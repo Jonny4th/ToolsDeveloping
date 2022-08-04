@@ -21,7 +21,6 @@ namespace ToolTesting
         private IEnumerator coroutine;
         void Start()
         {
-            // target = null;
             cleaningRate = CleaningRate;
         }
 
@@ -35,11 +34,9 @@ namespace ToolTesting
         {
             if(target == null & other.gameObject.GetComponentInParent<FacilityCleanliness>() != null)
             {
-                // Debug.Log("Trigger Successfull.");
                 target = other.gameObject;
                 coroutine = CleanCoroutine(target);
                 StartCoroutine(coroutine);
-                // target?.GetClean(cleaningRate);
             }
         }
         private void OnTriggerExit(Collider other)
@@ -48,7 +45,6 @@ namespace ToolTesting
             {
                 StopCoroutine(coroutine);
                 target = null;
-                // Debug.Log("Stop coroutine.");
             }
         }
     }

@@ -56,17 +56,7 @@ namespace ToolTesting
 
         void ICleanable.GetClean(int cleaningRate)
         {
-            // IEnumerator CleanCoroutine()
-            // {
-            //     while(doNeedClean)
-            //     {
-            //         Cleanliness += cleaningRate;
-            //         yield return new WaitForSecondsRealtime(1f);
-            //     }
-            // }
-            // StartCoroutine(CleanCoroutine());
             cleanliness += cleaningRate;
-
         }
         
         private void OnApplicationQuit()
