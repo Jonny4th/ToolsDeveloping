@@ -7,16 +7,17 @@ namespace ToolTesting
 {
     public class FacilityCleanliness : MonoBehaviour, ICleanable
     {
-        [SerializeField] private int Cleanliness;
-        [SerializeField] private int CleanlinessMax;
-        [SerializeField] public bool doNeedClean;
+        public int cleanliness;
+        public int cleanlinessMax;
+        public bool doNeedClean;
         public event Action OnCleanlinessIsZero;
         public event Action OnCleanlinessIsFull;
+        [SerializeField] private ProgressDisplay progressDisplay;
 
         // Start is called before the first frame update
         void Start()
         {
-            Cleanliness = CleanlinessMax;
+            cleanliness = cleanlinessMax;
             gameObject.GetComponentInChildren<Interact>().OnVisitorEnter += VisitorEnterReact;
         }
 
@@ -28,18 +29,18 @@ namespace ToolTesting
 
         private void UpdateDoNeedClean()
         {
-            if (Cleanliness <= 0) 
+            if (cleanliness <= 0) 
             {
-                Cleanliness = 0;
+                cleanliness = 0;
                 if (!doNeedClean) 
                 {
                     OnCleanlinessIsZero?.Invoke();
                     doNeedClean = true;
                 }
             }
-            else if (Cleanliness >= CleanlinessMax)
+            else if (cleanliness >= cleanlinessMax)
             {
-                Cleanliness = CleanlinessMax;
+                cleanliness = cleanlinessMax;
                 if (doNeedClean)
                 {
                     OnCleanlinessIsFull?.Invoke();
@@ -50,7 +51,7 @@ namespace ToolTesting
 
         private void VisitorEnterReact()
         {
-            if (Cleanliness > 0) Cleanliness--;
+            if (cleanliness > 0) cleanliness--;
         }
 
         void ICleanable.GetClean(int cleaningRate)
@@ -64,7 +65,8 @@ namespace ToolTesting
             //     }
             // }
             // StartCoroutine(CleanCoroutine());
-            Cleanliness += cleaningRate;
+            cleanliness += cleaningRate;
+
         }
         
         private void OnApplicationQuit()

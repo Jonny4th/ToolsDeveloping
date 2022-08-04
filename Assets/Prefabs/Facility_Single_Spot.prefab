@@ -219,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fce168e29e794343ac6dc35d4cc95fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cleanliness: 0
-  CleanlinessMax: 10
+  cleanliness: 0
+  cleanlinessMax: 10
   doNeedClean: 0
+  progressDisplay: {fileID: 0}

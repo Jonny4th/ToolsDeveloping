@@ -35,7 +35,7 @@ namespace ToolTesting
         {
             if(target == null & other.gameObject.GetComponentInParent<FacilityCleanliness>() != null)
             {
-                Debug.Log("Trigger Successfull.");
+                // Debug.Log("Trigger Successfull.");
                 target = other.gameObject;
                 coroutine = CleanCoroutine(target);
                 StartCoroutine(coroutine);
@@ -48,7 +48,7 @@ namespace ToolTesting
             {
                 StopCoroutine(coroutine);
                 target = null;
-                Debug.Log("Stop coroutine.");
+                // Debug.Log("Stop coroutine.");
             }
         }
     }
