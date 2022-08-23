@@ -7,7 +7,7 @@ using TMPro;
 
 public class NumberDisplay : MonoBehaviour
 {
-    [SerializeField] private FacilityCleanliness facility;
+    [SerializeField] private FacilityStatValue facility;
     [SerializeField] private TMP_Text display;
 
     private void Update() {
@@ -16,6 +16,6 @@ public class NumberDisplay : MonoBehaviour
 
     private void UpdateDisplay()
     {
-        display.text = facility.cleanliness + "/" + facility.cleanlinessMax;
+        display.text = facility.value + "/" + facility.valueMax;
     }
 }

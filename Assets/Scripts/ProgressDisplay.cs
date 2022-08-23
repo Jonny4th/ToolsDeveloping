@@ -5,8 +5,8 @@ namespace ToolTesting
 {
     public class ProgressDisplay : MonoBehaviour
     {
+        [SerializeField] private FacilityStatValue facility;
         [SerializeField] private Image progressDisplayImage;
-        [SerializeField] private FacilityCleanliness facility;
 
         private void Update()
         {
@@ -14,7 +14,7 @@ namespace ToolTesting
         }
         public void UpdateProgressbar()
         {
-            progressDisplayImage.fillAmount = Mathf.Clamp((float)facility.cleanliness/(float)facility.cleanlinessMax,0,1f);
+            progressDisplayImage.fillAmount = Mathf.Clamp((float)facility.value/(float)facility.valueMax,0,1f);
         }
 
     }
