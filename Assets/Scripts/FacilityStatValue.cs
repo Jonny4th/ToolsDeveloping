@@ -17,7 +17,7 @@ namespace ToolTesting
         void Start()
         {
             value = valueMax;
-            gameObject.GetComponentInChildren<GateKeepingEvents>().OnUserLeave += DeductValue;
+            gameObject.GetComponentInChildren<TriggerEnterExitEvents>().OnUserLeave += DeductValue;
         }
 
         void Update()

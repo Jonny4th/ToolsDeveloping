@@ -794,7 +794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9065453641214810424, guid: 6f4244179ec6e0541a6665ddf32ed484, type: 3}
       propertyPath: m_Name
-      value: Agent_Visitor (1)
+      value: Agent_Visitor
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5283306937626141107, guid: 6f4244179ec6e0541a6665ddf32ed484, type: 3}

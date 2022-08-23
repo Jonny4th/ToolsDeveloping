@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ToolTesting
 {
-    public class GateKeepingEvents : MonoBehaviour
+    public class TriggerEnterExitEvents : MonoBehaviour
     {
         [SerializeField] List<ScriptableTags> AllowTags = new List<ScriptableTags>();
         public event Action OnUserEnter;
@@ -21,11 +21,8 @@ namespace ToolTesting
         private void OnTriggerExit(Collider other) {
             if (other?.gameObject == currentUser)
             {
-                // if (currentUser.GetComponent<TagHolder>().IsOverlap(AllowTags))
-                // {
                 currentUser = null;
                 OnUserLeave?.Invoke();
-                // }
             }
         }
     }

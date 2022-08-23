@@ -33,7 +33,6 @@ namespace ToolTesting
             if (target != null & other.gameObject == target)
             {
                 StopCoroutine(coroutine);
-                // coroutine = null;
                 target = null;
             }
         }
