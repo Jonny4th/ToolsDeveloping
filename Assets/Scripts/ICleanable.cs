@@ -8,5 +8,4 @@ namespace ToolTesting
     {
         public void GetClean(int cleaningRate);
     }
-
 }

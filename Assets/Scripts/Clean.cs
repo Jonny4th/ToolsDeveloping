@@ -6,6 +6,7 @@ namespace ToolTesting
 {
     public class Clean : MonoBehaviour
     {
+        
         [SerializeField] private int FillingRate; // value increased per sec.
         public int fillingRate {get {return FillingRate;}}
         private GameObject target;
@@ -22,7 +23,7 @@ namespace ToolTesting
         private IEnumerator coroutine;
         private void OnTriggerEnter(Collider other)
         {
-            if(target == null & other.gameObject.GetComponentInParent<FacilityStatValue>() != null)
+            if(target == null & other.gameObject.GetComponentInParent<ICleanable>() != null)
             {
                 Debug.Log("Successfully Enter.");
                 target = other.gameObject;
