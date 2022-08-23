@@ -6,16 +6,14 @@ namespace ToolTesting
 {
     public class Clean : MonoBehaviour
     {
-        
+
         [SerializeField] private int FillingRate; // value increased per sec.
         public int fillingRate {get {return FillingRate;}}
         private GameObject target;
         IEnumerator CleanCoroutine(GameObject target)
         {
-            Debug.Log("Attemp Coroutine.");
             while(target.GetComponentInParent<FacilityStatValue>().doNeedReplenish)
             {
-                Debug.Log("Enter Coroutine.");
                 target.GetComponentInParent<ICleanable>()?.GetClean(fillingRate);
                 yield return new WaitForSecondsRealtime(1f);
             }
@@ -25,7 +23,6 @@ namespace ToolTesting
         {
             if(target == null & other.gameObject.GetComponentInParent<ICleanable>() != null)
             {
-                Debug.Log("Successfully Enter.");
                 target = other.gameObject;
                 coroutine = CleanCoroutine(target);
                 StartCoroutine(coroutine);
