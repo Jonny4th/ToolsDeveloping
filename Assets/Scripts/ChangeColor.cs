@@ -14,31 +14,39 @@ namespace ToolTesting
 
         public enum States 
         {
-            Active,
-            Working,
-            Inactive
+            Open,
+            Occupied,
+            Closed
         }
 
-        public States state = States.Active;
-        void Start()
+        public States state = States.Open;
+        void OnEnable()
         {
-            site.gameObject.GetComponent<Interact>().OnVisitorEnter += VisitorEnterReact;
-            site.gameObject.GetComponent<Interact>().OnVisitorLeave += VisitorLeaveReact;
-            gameObject.GetComponentInParent<FacilityCleanliness>().OnCleanlinessIsZero += AvailabilityToggle;
-            gameObject.GetComponentInParent<FacilityCleanliness>().OnCleanlinessIsFull += AvailabilityToggle;
+            site.gameObject.GetComponent<GateKeepingEvents>().OnUserEnter += VisitorEnterReact;
+            site.gameObject.GetComponent<GateKeepingEvents>().OnUserLeave += VisitorLeaveReact;
+            gameObject.GetComponentInParent<FacilityStatValue>().OnValueIsZero += AvailabilityToggle;
+            gameObject.GetComponentInParent<FacilityStatValue>().OnValueIsFull += AvailabilityToggle;
+        }
+
+        void OnDisable()
+        {
+            site.gameObject.GetComponent<GateKeepingEvents>().OnUserEnter -= VisitorEnterReact;
+            site.gameObject.GetComponent<GateKeepingEvents>().OnUserLeave -= VisitorLeaveReact;
+            gameObject.GetComponentInParent<FacilityStatValue>().OnValueIsZero -= AvailabilityToggle;
+            gameObject.GetComponentInParent<FacilityStatValue>().OnValueIsFull -= AvailabilityToggle;
         }
 
         void Update()
         {
             switch(state)
             {
-                case States.Active :
+                case States.Open :
                     gameObject.GetComponent<Renderer>().material = activeMaterial;
                     return;
-                case States.Working :
+                case States.Occupied :
                     gameObject.GetComponent<Renderer>().material = workingMaterial;
                     return;
-                case States.Inactive :
+                case States.Closed :
                     gameObject.GetComponent<Renderer>().material = inactiveMaterial;
                     return;
             }
@@ -46,18 +54,17 @@ namespace ToolTesting
 
         private void VisitorEnterReact()
         {
-            if (state == States.Active) state = States.Working;
-            
+            if (state == States.Open) state = States.Occupied;
         }
 
         private void VisitorLeaveReact()
         {
-            if (state == States.Working) state = States.Active;
+            if (state == States.Occupied) state = States.Open;
         }
 
         private void AvailabilityToggle()
         {
-            state = (state == States.Inactive)? States.Active : States.Inactive;
+            state = (state == States.Closed)? States.Open : States.Closed;
         }
     }
 }

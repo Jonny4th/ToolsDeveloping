@@ -6,34 +6,25 @@ namespace ToolTesting
 {
     public class Clean : MonoBehaviour
     {
-        public int cleaningRate {get; private set;}
-        [SerializeField] private int CleaningRate;
+        [SerializeField] private int FillingRate; // value increased per sec.
+        public int fillingRate {get {return FillingRate;}}
         private GameObject target;
-        // Start is called before the first frame update
         IEnumerator CleanCoroutine(GameObject target)
         {
-            while(target.GetComponentInParent<FacilityCleanliness>().doNeedClean)
+            Debug.Log("Attemp Coroutine.");
+            while(target.GetComponentInParent<FacilityStatValue>().doNeedReplenish)
             {
-                target.GetComponentInParent<ICleanable>()?.GetClean(cleaningRate);
+                Debug.Log("Enter Coroutine.");
+                target.GetComponentInParent<ICleanable>()?.GetClean(fillingRate);
                 yield return new WaitForSecondsRealtime(1f);
             }
         }
         private IEnumerator coroutine;
-        void Start()
-        {
-            cleaningRate = CleaningRate;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            
-        }
-
         private void OnTriggerEnter(Collider other)
         {
-            if(target == null & other.gameObject.GetComponentInParent<FacilityCleanliness>() != null)
+            if(target == null & other.gameObject.GetComponentInParent<FacilityStatValue>() != null)
             {
+                Debug.Log("Successfully Enter.");
                 target = other.gameObject;
                 coroutine = CleanCoroutine(target);
                 StartCoroutine(coroutine);
@@ -44,6 +35,7 @@ namespace ToolTesting
             if (target != null & other.gameObject == target)
             {
                 StopCoroutine(coroutine);
+                // coroutine = null;
                 target = null;
             }
         }
