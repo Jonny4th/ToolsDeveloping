@@ -12,7 +12,7 @@ namespace ToolTesting
         public event Action OnUserLeave;
         private GameObject currentUser = null;
         private void OnTriggerEnter(Collider other) {
-            if (currentUser == null && other.gameObject.GetComponent<TagHolder>().IsOverlap(AllowTags))
+            if (currentUser == null && other.GetComponent<TagHolder>().IsOverlap(AllowTags))
             {
                 currentUser = other.gameObject;
                 OnUserEnter?.Invoke();
