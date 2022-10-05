@@ -10,19 +10,26 @@ namespace ToolTesting
         public int value;
         public int valueMax;
         public bool doNeedReplenish;
+        public event Action OnValueChange;
         public event Action OnValueIsZero;
         public event Action OnValueIsFull;
         // [SerializeField] private ProgressDisplay progressDisplay;
 
-        void Start()
+        private void OnEnable()
         {
-            value = valueMax;
+            OnValueChange += UpdateDoNeedClean;
             gameObject.GetComponentInChildren<TriggerEnterExitEvents>().OnUserLeave += DeductValue;
         }
 
-        void Update()
+        private void OnDisable()
         {
-            UpdateDoNeedClean();
+            OnValueChange -= UpdateDoNeedClean;
+            gameObject.GetComponentInChildren<TriggerEnterExitEvents>().OnUserLeave -= DeductValue;
+        }
+
+        void Start()
+        {
+            value = valueMax;
         }
 
         private void UpdateDoNeedClean()
@@ -49,12 +56,17 @@ namespace ToolTesting
 
         private void DeductValue()
         {
-            if (value > 0) value--;
+            if (value > 0)
+            {
+                value--;
+                OnValueChange?.Invoke();
+            }
         }
 
         void ICleanable.GetClean(int cleaningRate)
         {
             value += cleaningRate;
+            OnValueChange?.Invoke();
         }
         
         private void OnApplicationQuit()

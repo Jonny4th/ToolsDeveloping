@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace ToolTesting
 {
-    public class ChangeColor : MonoBehaviour
+    public class ChangeState : MonoBehaviour
     {
-        [SerializeField] private Material activeMaterial;
-        [SerializeField] private Material inactiveMaterial;
-        [SerializeField] private Material workingMaterial;
+        [SerializeField] private Material openMaterial;
+        [SerializeField] private Material closedMaterial;
+        [SerializeField] private Material occupiedMaterial;
         [SerializeField] private GameObject site;
 
-        public enum States 
+        public enum States
         {
             Open,
             Occupied,
@@ -41,18 +41,18 @@ namespace ToolTesting
             switch(state)
             {
                 case States.Open :
-                    gameObject.GetComponent<Renderer>().material = activeMaterial;
+                    gameObject.GetComponent<Renderer>().material = openMaterial;
                     return;
                 case States.Occupied :
-                    gameObject.GetComponent<Renderer>().material = workingMaterial;
+                    gameObject.GetComponent<Renderer>().material = occupiedMaterial;
                     return;
                 case States.Closed :
-                    gameObject.GetComponent<Renderer>().material = inactiveMaterial;
+                    gameObject.GetComponent<Renderer>().material = closedMaterial;
                     return;
             }
         }
 
-        private void VisitorEnterReact()
+        private void VisitorEnterReact(GameObject visitor)
         {
             if (state == States.Open) state = States.Occupied;
         }

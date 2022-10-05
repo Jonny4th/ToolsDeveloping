@@ -497,9 +497,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91376dd5eef50bc40be8a5aa035a8cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeMaterial: {fileID: 2100000, guid: 40b45333843cea740972f241c47670b3, type: 2}
-  inactiveMaterial: {fileID: 2100000, guid: 8691b682ad060ea48ab0e014e810cf64, type: 2}
-  workingMaterial: {fileID: 2100000, guid: edb31c869bacea34392cc2cb94ea9675, type: 2}
+  openMaterial: {fileID: 2100000, guid: 40b45333843cea740972f241c47670b3, type: 2}
+  closedMaterial: {fileID: 2100000, guid: 8691b682ad060ea48ab0e014e810cf64, type: 2}
+  occupiedMaterial: {fileID: 2100000, guid: edb31c869bacea34392cc2cb94ea9675, type: 2}
   site: {fileID: 3454746709983493151}
   state: 0
 --- !u!1 &6170463503943441605
@@ -614,6 +614,7 @@ GameObject:
   - component: {fileID: 5721166720996910921}
   - component: {fileID: 4991592692175500858}
   - component: {fileID: 4497949569677677155}
+  - component: {fileID: 1658727713}
   m_Layer: 0
   m_Name: Facility_Single_Spot
   m_TagString: Untagged
@@ -668,3 +669,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: {fileID: 11400000, guid: 9217cd757ce23bd4d85b5aa44457ea70, type: 2}
+--- !u!114 &1658727713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8514077293696270493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e59d58b8cbf6794e9a2b6d057ddc85d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sites:
+  - {fileID: 5282821495097271553}

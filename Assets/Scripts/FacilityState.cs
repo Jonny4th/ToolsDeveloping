@@ -3,10 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class FacilityStateHolder : MonoBehaviour
+public class FacilityState : MonoBehaviour
 {
+    [SerializeField] FacilityStates[] facilityStates;
     public FacilityStates currentState;
-    public static event Action<FacilityStates> OnStateChange;
+    public event Action<FacilityStates> OnStateChange;
+
+    private void StateLogic()
+    {
+        
+    }
+
+
     public void SetState(FacilityStates state)
     {
         currentState = state;

@@ -683,6 +683,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4497949569677677155, guid: a76b6aac87e913442beda6224d15119b, type: 3}
+      propertyPath: facilityStates.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4497949569677677155, guid: a76b6aac87e913442beda6224d15119b, type: 3}
+      propertyPath: facilityStates.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9217cd757ce23bd4d85b5aa44457ea70, type: 2}
+    - target: {fileID: 4497949569677677155, guid: a76b6aac87e913442beda6224d15119b, type: 3}
+      propertyPath: facilityStates.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: fb864aec63a5d4c4c9a5eb6909861e0b, type: 2}
+    - target: {fileID: 4497949569677677155, guid: a76b6aac87e913442beda6224d15119b, type: 3}
+      propertyPath: facilityStates.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 6cdfdf404bb7ed549beed867df04246f, type: 2}
     - target: {fileID: 5721166720996910921, guid: a76b6aac87e913442beda6224d15119b, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -958,14 +974,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3236236342900858159, guid: 6f4244179ec6e0541a6665ddf32ed484, type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3236236342900858159, guid: 6f4244179ec6e0541a6665ddf32ed484, type: 3}
-      propertyPath: m_IsKinematic
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6262724925927512646, guid: 6f4244179ec6e0541a6665ddf32ed484, type: 3}
       propertyPath: m_RootOrder
       value: 2
