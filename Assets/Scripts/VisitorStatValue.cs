@@ -10,7 +10,7 @@ namespace ToolTesting
     {
         private float currentValue;
         [SerializeField] TMP_Text valueDisplay;
-     
+
         private void Start()
         {
             SetValue(0);

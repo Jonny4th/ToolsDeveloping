@@ -668,6 +668,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f85d6f84d46b1d04283e9ddde060788f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Operating: {fileID: 11400000, guid: 9217cd757ce23bd4d85b5aa44457ea70, type: 2}
+  Occupied: {fileID: 11400000, guid: fb864aec63a5d4c4c9a5eb6909861e0b, type: 2}
+  Closed: {fileID: 11400000, guid: 6cdfdf404bb7ed549beed867df04246f, type: 2}
   currentState: {fileID: 11400000, guid: 9217cd757ce23bd4d85b5aa44457ea70, type: 2}
 --- !u!114 &1658727713
 MonoBehaviour:

@@ -7,7 +7,7 @@ namespace ToolTesting
 {
     public class FacilityStatValue : MonoBehaviour, ICleanable
     {
-        public int value;
+        public int currentValue;
         public int valueMax;
         public bool doNeedReplenish;
         public event Action OnValueChange;
@@ -29,23 +29,23 @@ namespace ToolTesting
 
         void Start()
         {
-            value = valueMax;
+            currentValue = valueMax;
         }
 
         private void UpdateDoNeedClean()
         {
-            if (value <= 0) 
+            if (currentValue <= 0) 
             {
-                value = 0;
+                currentValue = 0;
                 if (!doNeedReplenish) 
                 {
                     OnValueIsZero?.Invoke();
                     doNeedReplenish = true;
                 }
             }
-            else if (value >= valueMax)
+            else if (currentValue >= valueMax)
             {
-                value = valueMax;
+                currentValue = valueMax;
                 if (doNeedReplenish)
                 {
                     OnValueIsFull?.Invoke();
@@ -54,18 +54,18 @@ namespace ToolTesting
             }
         }
 
-        private void DeductValue()
+        public void DeductValue()
         {
-            if (value > 0)
+            if (currentValue > 0)
             {
-                value--;
+                currentValue--;
                 OnValueChange?.Invoke();
             }
         }
 
         void ICleanable.GetClean(int cleaningRate)
         {
-            value += cleaningRate;
+            currentValue += cleaningRate;
             OnValueChange?.Invoke();
         }
         

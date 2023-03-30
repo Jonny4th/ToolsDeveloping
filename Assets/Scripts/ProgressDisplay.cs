@@ -14,7 +14,7 @@ namespace ToolTesting
         }
         public void UpdateProgressbar()
         {
-            progressDisplayImage.fillAmount = Mathf.Clamp((float)facility.value/(float)facility.valueMax,0,1f);
+            progressDisplayImage.fillAmount = Mathf.Clamp((float)facility.currentValue/(float)facility.valueMax,0,1f);
         }
 
     }

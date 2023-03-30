@@ -22,16 +22,16 @@ namespace ToolTesting
         public States state = States.Open;
         void OnEnable()
         {
-            site.gameObject.GetComponent<TriggerEnterExitEvents>().OnUserEnter += VisitorEnterReact;
-            site.gameObject.GetComponent<TriggerEnterExitEvents>().OnUserLeave += VisitorLeaveReact;
+            site.GetComponent<TriggerEnterExitEvents>().OnUserEnter += VisitorEnterReact;
+            site.GetComponent<TriggerEnterExitEvents>().OnUserLeave += VisitorLeaveReact;
             gameObject.GetComponentInParent<FacilityStatValue>().OnValueIsZero += AvailabilityToggle;
             gameObject.GetComponentInParent<FacilityStatValue>().OnValueIsFull += AvailabilityToggle;
         }
 
         void OnDisable()
         {
-            site.gameObject.GetComponent<TriggerEnterExitEvents>().OnUserEnter -= VisitorEnterReact;
-            site.gameObject.GetComponent<TriggerEnterExitEvents>().OnUserLeave -= VisitorLeaveReact;
+            site.GetComponent<TriggerEnterExitEvents>().OnUserEnter -= VisitorEnterReact;
+            site.GetComponent<TriggerEnterExitEvents>().OnUserLeave -= VisitorLeaveReact;
             gameObject.GetComponentInParent<FacilityStatValue>().OnValueIsZero -= AvailabilityToggle;
             gameObject.GetComponentInParent<FacilityStatValue>().OnValueIsFull -= AvailabilityToggle;
         }

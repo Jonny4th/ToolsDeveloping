@@ -26,9 +26,8 @@ public class FacilityFunction : MonoBehaviour
 
     private void DoThingsToVisitor(GameObject visitor)
     {
-        if (GetComponentInChildren<ChangeState>().state == ChangeState.States.Open)
-        {
-            visitor.GetComponent<VisitorStatValue>().ModifyValue(5f);
-        }
+        var state = GetComponentInChildren<ChangeState>().state;
+        if(state == ChangeState.States.Closed) return;
+        visitor.GetComponent<VisitorStatValue>().ModifyValue(5f);
     }
 }

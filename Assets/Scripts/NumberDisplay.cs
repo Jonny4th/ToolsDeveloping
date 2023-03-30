@@ -16,6 +16,6 @@ public class NumberDisplay : MonoBehaviour
 
     private void UpdateDisplay()
     {
-        display.text = facility.value + "/" + facility.valueMax;
+        display.text = facility.currentValue + "/" + facility.valueMax;
     }
 }
