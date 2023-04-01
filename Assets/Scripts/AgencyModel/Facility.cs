@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+﻿using FacilityRelated.Stat;
+using UnityEngine;
 
 namespace FacilityRelated
 {
     public class Facility : MonoBehaviour
     {
-        public FacilityStatValue Cleanliness;
+        public FacilityCleanlinessStat Cleanliness;
     }
 }

@@ -110,8 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91376dd5eef50bc40be8a5aa035a8cd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spot: {fileID: 438820647463225283}
-  facility: {fileID: 8495877786043396117}
+  facilitystate: {fileID: 8495877786043396117}
   openMaterial: {fileID: 2100000, guid: 40b45333843cea740972f241c47670b3, type: 2}
   closedMaterial: {fileID: 2100000, guid: 8691b682ad060ea48ab0e014e810cf64, type: 2}
   occupiedMaterial: {fileID: 2100000, guid: edb31c869bacea34392cc2cb94ea9675, type: 2}
@@ -189,7 +188,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4441836384130540267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fce168e29e794343ac6dc35d4cc95fa, type: 3}
+  m_Script: {fileID: 11500000, guid: 94ac5902185313546bd679aad4608af0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentValue: 0

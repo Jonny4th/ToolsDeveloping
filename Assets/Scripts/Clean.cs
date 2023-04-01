@@ -1,3 +1,4 @@
+using FacilityRelated.Stat;
 using System.Collections;
 using ToolTesting;
 using UnityEngine;
@@ -13,10 +14,10 @@ namespace FacilityRelated
 
         IEnumerator CleanCoroutine(GameObject target)
         {
-            FacilityStatValue statValue = target.GetComponentInParent<FacilityStatValue>();
+            FacilityCleanlinessStat statValue = target.GetComponentInParent<FacilityCleanlinessStat>();
             bool isDone = false;
 
-            void Done()
+            void Done(FacilityStat stat)
             {
                 isDone = true;
             }

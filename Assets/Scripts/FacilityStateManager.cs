@@ -1,11 +1,11 @@
 using AgentRelated;
 using FacilityRelated;
+using FacilityRelated.Stat;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using ToolTesting;
 using UnityEngine;
-using static Unity.VisualScripting.Antlr3.Runtime.Tree.TreeWizard;
 
 namespace FiniteStateMachine
 {
@@ -20,7 +20,7 @@ namespace FiniteStateMachine
         void OnEnable()
         {
             facility.Cleanliness.OnValueIsZero += Close;
-            facility.Cleanliness.OnValueIsReplenished += Open;
+            facility.Cleanliness.GetReplenished += Open;
         }
 
         void Awake()
@@ -39,12 +39,12 @@ namespace FiniteStateMachine
             ((FacilityState)CurrentState).Interact(person, this);
         }
         
-        public void Close()
+        public void Close(FacilityStat stat)
         {
             SwitchState(Closed);
         }
 
-        public void Open()
+        public void Open(FacilityStat stat)
         {
             SwitchState(Operating);
         }

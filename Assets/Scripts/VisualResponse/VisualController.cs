@@ -1,3 +1,4 @@
+using FacilityRelated;
 using FiniteStateMachine;
 using System;
 using System.Collections;
@@ -8,25 +9,24 @@ namespace ToolTesting
 {
     public class VisualController : MonoBehaviour
     {
-        [SerializeField] SpotStateManager spot;
-        [SerializeField] FacilityStateManager facility;
+        [SerializeField] FacilityStateManager facilitystate;
+        
         [SerializeField] Material openMaterial;
         [SerializeField] Material closedMaterial;
         [SerializeField] Material occupiedMaterial;
+
         Renderer siteVisual;
 
         void OnEnable()
         {
-            spot.Occupied.OnStateEnter += OnFacilityFull;
-            spot.Available.OnStateEnter += OnFacilityVacant;
-            facility.Closed.OnStateEnter += OnFacilityClosed;
-            facility.Operating.OnStateEnter += OnFacilityOperating;
+            facilitystate.Closed.OnStateEnter += OnFacilityClosed;
+            facilitystate.Operating.OnStateEnter += OnFacilityOperating;
         }
 
         void OnDisable()
         {
-            spot.Occupied.OnStateExit -= OnFacilityFull;
-            spot.Available.OnStateEnter -= OnFacilityVacant;
+            facilitystate.Closed.OnStateEnter -= OnFacilityClosed;
+            facilitystate.Operating.OnStateEnter -= OnFacilityOperating;
         }
 
         void Awake()
@@ -34,21 +34,8 @@ namespace ToolTesting
             siteVisual = GetComponent<Renderer>();
         }
 
-        private void OnFacilityFull(FiniteStateManager stateManager)
-        {
-            if(facility.CurrentState is not FacilityStateManager.OperatingState) return;
-            siteVisual.material = occupiedMaterial;
-        }
-
-        private void OnFacilityVacant(FiniteStateManager stateManager)
-        {
-            if(facility.CurrentState is not FacilityStateManager.OperatingState) return;
-            siteVisual.material = openMaterial;
-        }
-
         private void OnFacilityOperating(FiniteStateManager manager)
         {
-            if(spot.CurrentState is not SpotStateManager.AvailableState) return;
             siteVisual.material = openMaterial;
         }
 

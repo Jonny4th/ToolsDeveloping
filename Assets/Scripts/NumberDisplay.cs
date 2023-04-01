@@ -1,10 +1,10 @@
+using FacilityRelated.Stat;
 using TMPro;
 using UnityEngine;
-using FacilityRelated;
 
 public class NumberDisplay : MonoBehaviour
 {
-    [SerializeField] private FacilityStatValue facility;
+    [SerializeField] private FacilityCleanlinessStat facility;
     [SerializeField] private TMP_Text display;
 
     private void Update()

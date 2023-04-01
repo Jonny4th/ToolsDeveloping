@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace FiniteStateMachine
 {
-    public sealed class SpotStateManager : FiniteStateManager
+    public class SpotStateManager : FiniteStateManager
     {
         public AvailableState Available { get; private set; } = new();
         public OccupiedState Occupied { get; private set; } = new();
@@ -33,7 +33,7 @@ namespace FiniteStateMachine
             CurrentUser = person;
         }
 
-        private void SetActive(bool v)
+        public void SetActive(bool v)
         {
             if(v)
             {
