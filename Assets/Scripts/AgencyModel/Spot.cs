@@ -6,6 +6,6 @@ namespace FacilityRelated
 {
     public class Spot : MonoBehaviour
     {
-        [SerializeField] public SpotStateManager state;
+        public SpotStateManager state;
     }
 }
