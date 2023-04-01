@@ -9,6 +9,8 @@ namespace FacilityRelated
     public class SpotDependentGroup : MonoBehaviour
     {
         [SerializeField] List<Spot> spots;
+        HashSet<SpotStateManager> occupiedSpots = new();
+        [SerializeField] int occupantLimit = 1;
 
         void OnEnable()
         {
@@ -30,22 +32,26 @@ namespace FacilityRelated
             }
         }
 
-        private void OnSpotOccupied(FiniteStateManager obj)
+        private void OnSpotOccupied(FiniteStateManager state)
         {
-            foreach(var spot in spots)
-            {
-                if(spot.state == obj) continue;
-                spot.state.SetActive(false);
-            }
+            if(occupiedSpots.Count == occupantLimit) return;
+
+            occupiedSpots.Add((SpotStateManager)state);
+
+            if(occupiedSpots.Count != occupantLimit) return;
+
+            spots.FindAll(spot => spot.state.CurrentState is not SpotStateManager.OccupiedState)
+                .ForEach(freeSpot => freeSpot.state.SetActive(false));
         }
        
-        private void OnSpotUnccupied(FiniteStateManager obj)
+        private void OnSpotUnccupied(FiniteStateManager state)
         {
-            foreach(var spot in spots)
-            {
-                if(spot.state == obj) continue;
-                spot.state.SetActive(true);
-            }
+            occupiedSpots.Remove((SpotStateManager)state);
+
+            if(occupiedSpots.Count != occupantLimit - 1) return;
+
+            spots.FindAll(spot => spot.state.CurrentState is not SpotStateManager.OccupiedState)
+                .ForEach(freeSpot => freeSpot.state.SetActive(true));
         }
     }
 }
