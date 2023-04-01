@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace ToolTesting
 {
-    public class ChangeState : MonoBehaviour
+    public class VisualController : MonoBehaviour
     {
         [SerializeField] SpotStateManager spot;
         [SerializeField] FacilityStateManager facility;
@@ -17,16 +17,16 @@ namespace ToolTesting
 
         void OnEnable()
         {
-            spot.Full.OnStateEnter += OnFacilityFull;
-            spot.Vacant.OnStateEnter += OnFacilityVacant;
+            spot.Occupied.OnStateEnter += OnFacilityFull;
+            spot.Available.OnStateEnter += OnFacilityVacant;
             facility.Closed.OnStateEnter += OnFacilityClosed;
             facility.Operating.OnStateEnter += OnFacilityOperating;
         }
 
         void OnDisable()
         {
-            spot.Full.OnStateExit -= OnFacilityFull;
-            spot.Vacant.OnStateEnter -= OnFacilityVacant;
+            spot.Occupied.OnStateExit -= OnFacilityFull;
+            spot.Available.OnStateEnter -= OnFacilityVacant;
         }
 
         void Awake()
@@ -48,6 +48,7 @@ namespace ToolTesting
 
         private void OnFacilityOperating(FiniteStateManager manager)
         {
+            if(spot.CurrentState is not SpotStateManager.AvailableState) return;
             siteVisual.material = openMaterial;
         }
 

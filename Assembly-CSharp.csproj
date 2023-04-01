@@ -93,7 +93,7 @@
     <Compile Include="Assets\Scripts\ICleanable.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\Scripts\ListHolder.cs" />
-    <Compile Include="Assets\Scripts\ChangeState.cs" />
+    <Compile Include="Assets\Scripts\VisualResponse\VisualController.cs" />
     <Compile Include="Assets\Scripts\AgencyModel\Person.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_FrameRateCounter.cs" />
     <Compile Include="Assets\Scripts\FacilityFunction.cs" />
@@ -114,6 +114,8 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\ScriptableObject\Facility States\FacilityStates.cs" />
     <Compile Include="Assets\Scripts\AgencyModel\Janitor.cs" />
+    <Compile Include="Assets\Scripts\AgencyModel\Spot.cs" />
+    <Compile Include="Assets\Scripts\VisualResponse\SpotVisualController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace Agent
+namespace AgentRelated
 {
     public class Person : MonoBehaviour
     {
