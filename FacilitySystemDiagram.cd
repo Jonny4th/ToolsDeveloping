@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="FacilityRelated.Facility" Collapsed="true">
+    <Position X="5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\AgencyModel\Facility.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="Cleanliness" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="FacilityRelated.Stat.FacilityCleanlinessStat" Collapsed="true">
+    <Position X="1.75" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAABBAQACACAACAAAAAAAAAAAAAABAICAAAAAAACAA=</HashCode>
+      <FileName>Assets\Scripts\FacilityStatus\FacilityCleanlinessStat.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FacilityRelated.Stat.FacilityStat" Collapsed="true">
+    <Position X="1.75" Y="3.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>QAAAEABAAAAAAAAAAAAgAAAAAEAAAAAIAAAhAFAAABA=</HashCode>
+      <FileName>Assets\Scripts\FacilityStatus\FacilityStat.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FiniteStateMachine.FacilityStateManager" Collapsed="true">
+    <Position X="4" Y="2" Width="1.75" />
+    <NestedTypes>
+      <Class Name="FiniteStateMachine.FacilityStateManager.FacilityState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\FiniteStateMachine\FacilityStateManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="FiniteStateMachine.FacilityStateManager.OperatingState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\FiniteStateMachine\FacilityStateManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="FiniteStateMachine.FacilityStateManager.ClosedState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\FiniteStateMachine\FacilityStateManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACABIAAAAAAAAAAAIAAAAAAAAAAIAACACEA=</HashCode>
+      <FileName>Assets\Scripts\FiniteStateMachine\FacilityStateManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="facility" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="spots" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FiniteStateMachine.FiniteStateManager" Collapsed="true">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\FiniteStateMachine\FiniteStateManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FiniteStateMachine.SpotStateManager" Collapsed="true">
+    <Position X="1.75" Y="2" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="FiniteStateMachine.SpotStateManager.SpotState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\FiniteStateMachine\SpotStateManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="FiniteStateMachine.SpotStateManager.OccupiedState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\FiniteStateMachine\SpotStateManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="FiniteStateMachine.SpotStateManager.AvailableState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\FiniteStateMachine\SpotStateManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="FiniteStateMachine.SpotStateManager.InactiveState" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Assets\Scripts\FiniteStateMachine\SpotStateManager.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAACAAAEKAAAAAAAAAAAABAAAAAAIAAQAABAIAAAAA=</HashCode>
+      <FileName>Assets\Scripts\FiniteStateMachine\SpotStateManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

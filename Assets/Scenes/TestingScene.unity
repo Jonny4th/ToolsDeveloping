@@ -1033,8 +1033,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Agent_Visitor
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5283306937626141107, guid: 6f4244179ec6e0541a6665ddf32ed484, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f4244179ec6e0541a6665ddf32ed484, type: 3}
 --- !u!1 &1558285287
 GameObject:

@@ -10,18 +10,8 @@ namespace AgentRelated
 {
     public class Person : MonoBehaviour
     {
-        [SerializeField] protected IInteractable interactable;
-        
-        public virtual void Utilize()
-        {
-            if(interactable == null) return;
-            interactable.Interact(this);
-        }
-
-        private void OnTriggerEnter(Collider other)
-        {
-            interactable = other.GetComponentInParent<IInteractable>();
-            //other.TryGetComponent(out interactable);
-        }
+        [SerializeField] protected string firstName;
+        [SerializeField] protected string lastName;
+        [SerializeField] protected int age;
     }
 }

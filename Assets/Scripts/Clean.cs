@@ -7,7 +7,6 @@ namespace FacilityRelated
 {
     public class Clean : MonoBehaviour
     {
-
         [SerializeField] private float fillingRate; // value increased per sec.
         public float FillingRate { get { return fillingRate; } }
         private GameObject target;

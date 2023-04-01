@@ -4,18 +4,18 @@ using UnityEngine;
 
 namespace Assets.Editors
 {
-    [CustomEditor(typeof(Person))]
-    public class PersonEditor : Editor
+    [CustomEditor(typeof(Visitor))]
+    public class VisitorEditor : Editor
     {
         public override void OnInspectorGUI()
         {
             base.OnInspectorGUI();
 
-            Person person = (Person)target;
+            Visitor visitor = (Visitor)target;
 
             if(GUILayout.Button("Interact with Facility"))
             {
-                person.Utilize();
+                visitor.Utilize();
             }
         }
     }
