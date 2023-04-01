@@ -1,24 +1,39 @@
 using System.Collections;
-using System.Collections.Generic;
+using ToolTesting;
 using UnityEngine;
 
-namespace ToolTesting
+namespace FacilityRelated
 {
     public class Clean : MonoBehaviour
     {
 
-        [SerializeField] private int FillingRate; // value increased per sec.
-        public int fillingRate {get {return FillingRate;}}
+        [SerializeField] private float fillingRate; // value increased per sec.
+        public float FillingRate { get { return fillingRate; } }
         private GameObject target;
+
         IEnumerator CleanCoroutine(GameObject target)
         {
-            while(target.GetComponentInParent<FacilityStatValue>().doNeedReplenish)
+            FacilityStatValue statValue = target.GetComponentInParent<FacilityStatValue>();
+            bool isDone = false;
+
+            void Done()
             {
-                target.GetComponentInParent<ICleanable>()?.GetClean(fillingRate);
-                yield return new WaitForSecondsRealtime(1f);
+                isDone = true;
             }
+
+            statValue.OnValueIsFull += Done;
+
+            while(!isDone)
+            {
+                target.GetComponentInParent<ICleanable>()?.GetClean(1);
+                yield return new WaitForSecondsRealtime(1f / fillingRate);
+            }
+
+            statValue.OnValueIsFull -= Done;
         }
+
         private IEnumerator coroutine;
+
         private void OnTriggerEnter(Collider other)
         {
             if(target == null & other.gameObject.GetComponentInParent<ICleanable>() != null)
@@ -28,9 +43,10 @@ namespace ToolTesting
                 StartCoroutine(coroutine);
             }
         }
+
         private void OnTriggerExit(Collider other)
         {
-            if (target != null & other.gameObject == target)
+            if(target != null & other.gameObject == target)
             {
                 StopCoroutine(coroutine);
                 target = null;

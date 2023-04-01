@@ -1,74 +1,89 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using ToolTesting;
 using UnityEngine;
 
-namespace ToolTesting
+namespace FacilityRelated
 {
     public class FacilityStatValue : MonoBehaviour, ICleanable
     {
-        public int currentValue;
-        public int valueMax;
-        public bool doNeedReplenish;
+        [SerializeField]
+        private int currentValue;
+        [SerializeField]
+        private int valueMax;
+        public bool DoNeedReplenish => CurrentValue <= 0; //{ get; private set; }
+        public bool IsFull => CurrentValue == ValueMax;
+
+        public int CurrentValue
+        {
+            get => currentValue;
+            set
+            {
+                currentValue = value;
+                if(currentValue > valueMax)
+                {
+                    currentValue = valueMax;
+                }
+                else if(currentValue < 0)
+                {
+                    currentValue = 0;
+                }
+            }
+        }
+
+        public int ValueMax { get => valueMax; set => valueMax = value; }
+
         public event Action OnValueChange;
         public event Action OnValueIsZero;
+        public event Action OnValueIsReplenished;
         public event Action OnValueIsFull;
-        // [SerializeField] private ProgressDisplay progressDisplay;
 
         private void OnEnable()
         {
             OnValueChange += UpdateDoNeedClean;
-            gameObject.GetComponentInChildren<TriggerEnterExitEvents>().OnUserLeave += DeductValue;
         }
 
         private void OnDisable()
         {
             OnValueChange -= UpdateDoNeedClean;
-            gameObject.GetComponentInChildren<TriggerEnterExitEvents>().OnUserLeave -= DeductValue;
         }
 
         void Start()
         {
-            currentValue = valueMax;
+            CurrentValue = ValueMax;
         }
 
         private void UpdateDoNeedClean()
         {
-            if (currentValue <= 0) 
+            if(DoNeedReplenish)
             {
-                currentValue = 0;
-                if (!doNeedReplenish) 
-                {
-                    OnValueIsZero?.Invoke();
-                    doNeedReplenish = true;
-                }
+                CurrentValue = 0;
+                OnValueIsZero?.Invoke();
             }
-            else if (currentValue >= valueMax)
+            else if(CurrentValue > 0)
             {
-                currentValue = valueMax;
-                if (doNeedReplenish)
-                {
-                    OnValueIsFull?.Invoke();
-                    doNeedReplenish = false;
-                } 
+                OnValueIsReplenished?.Invoke();
+            }
+            else if(IsFull)
+            {
+                OnValueIsFull?.Invoke();
             }
         }
 
         public void DeductValue()
         {
-            if (currentValue > 0)
+            if(CurrentValue > 0)
             {
-                currentValue--;
+                CurrentValue--;
                 OnValueChange?.Invoke();
             }
         }
 
         void ICleanable.GetClean(int cleaningRate)
         {
-            currentValue += cleaningRate;
+            CurrentValue += cleaningRate;
             OnValueChange?.Invoke();
         }
-        
+
         private void OnApplicationQuit()
         {
             StopAllCoroutines();

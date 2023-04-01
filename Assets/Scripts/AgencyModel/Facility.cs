@@ -1,19 +1,9 @@
-﻿using Agent;
-using ToolTesting;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Facility
+namespace FacilityRelated
 {
-    public class Facility : MonoBehaviour, IInteractable
+    public class Facility : MonoBehaviour
     {
-        [SerializeField] FacilityStatValue statValue;
-        public virtual void Interact(Person visitor) 
-        {
-            if (statValue.currentValue > 0)
-            {
-                visitor.GetComponent<VisitorStatValue>().ModifyValue(5f);
-                statValue.DeductValue();
-            }
-        }
+        public FacilityStatValue Cleanliness;
     }
 }

@@ -1,4 +1,4 @@
-﻿using Facility;
+﻿using FacilityRelated;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +10,18 @@ namespace Agent
 {
     public class Person : MonoBehaviour
     {
-        [SerializeField] IInteractable interactable;
-        public void Utilize()
+        [SerializeField] protected IInteractable interactable;
+        
+        public virtual void Utilize()
         {
+            if(interactable == null) return;
             interactable.Interact(this);
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            other.TryGetComponent(out interactable);
+            interactable = other.GetComponentInParent<IInteractable>();
+            //other.TryGetComponent(out interactable);
         }
     }
 }

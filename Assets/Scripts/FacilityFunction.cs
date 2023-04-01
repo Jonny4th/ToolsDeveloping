@@ -1,3 +1,4 @@
+using FiniteStateMachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -21,13 +22,10 @@ public class FacilityFunction : MonoBehaviour
         {
             site.OnUserEnter -= DoThingsToVisitor;
         }
-        
     }
 
     private void DoThingsToVisitor(GameObject visitor)
     {
-        var state = GetComponentInChildren<ChangeState>().state;
-        if(state == ChangeState.States.Closed) return;
         visitor.GetComponent<VisitorStatValue>().ModifyValue(5f);
     }
 }

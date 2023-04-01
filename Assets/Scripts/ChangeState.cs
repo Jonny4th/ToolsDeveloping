@@ -1,3 +1,4 @@
+using FiniteStateMachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -7,64 +8,52 @@ namespace ToolTesting
 {
     public class ChangeState : MonoBehaviour
     {
-        [SerializeField] private Material openMaterial;
-        [SerializeField] private Material closedMaterial;
-        [SerializeField] private Material occupiedMaterial;
-        [SerializeField] private GameObject site;
+        [SerializeField] SpotStateManager spot;
+        [SerializeField] FacilityStateManager facility;
+        [SerializeField] Material openMaterial;
+        [SerializeField] Material closedMaterial;
+        [SerializeField] Material occupiedMaterial;
+        Renderer siteVisual;
 
-        public enum States
-        {
-            Open,
-            Occupied,
-            Closed
-        }
-
-        public States state = States.Open;
         void OnEnable()
         {
-            site.GetComponent<TriggerEnterExitEvents>().OnUserEnter += VisitorEnterReact;
-            site.GetComponent<TriggerEnterExitEvents>().OnUserLeave += VisitorLeaveReact;
-            gameObject.GetComponentInParent<FacilityStatValue>().OnValueIsZero += AvailabilityToggle;
-            gameObject.GetComponentInParent<FacilityStatValue>().OnValueIsFull += AvailabilityToggle;
+            spot.Full.OnStateEnter += OnFacilityFull;
+            spot.Vacant.OnStateEnter += OnFacilityVacant;
+            facility.Closed.OnStateEnter += OnFacilityClosed;
+            facility.Operating.OnStateEnter += OnFacilityOperating;
         }
 
         void OnDisable()
         {
-            site.GetComponent<TriggerEnterExitEvents>().OnUserEnter -= VisitorEnterReact;
-            site.GetComponent<TriggerEnterExitEvents>().OnUserLeave -= VisitorLeaveReact;
-            gameObject.GetComponentInParent<FacilityStatValue>().OnValueIsZero -= AvailabilityToggle;
-            gameObject.GetComponentInParent<FacilityStatValue>().OnValueIsFull -= AvailabilityToggle;
+            spot.Full.OnStateExit -= OnFacilityFull;
+            spot.Vacant.OnStateEnter -= OnFacilityVacant;
         }
 
-        void Update()
+        void Awake()
         {
-            switch(state)
-            {
-                case States.Open :
-                    gameObject.GetComponent<Renderer>().material = openMaterial;
-                    return;
-                case States.Occupied :
-                    gameObject.GetComponent<Renderer>().material = occupiedMaterial;
-                    return;
-                case States.Closed :
-                    gameObject.GetComponent<Renderer>().material = closedMaterial;
-                    return;
-            }
+            siteVisual = GetComponent<Renderer>();
         }
 
-        private void VisitorEnterReact(GameObject visitor)
+        private void OnFacilityFull(FiniteStateManager stateManager)
         {
-            if (state == States.Open) state = States.Occupied;
+            if(facility.CurrentState is not FacilityStateManager.OperatingState) return;
+            siteVisual.material = occupiedMaterial;
         }
 
-        private void VisitorLeaveReact()
+        private void OnFacilityVacant(FiniteStateManager stateManager)
         {
-            if (state == States.Occupied) state = States.Open;
+            if(facility.CurrentState is not FacilityStateManager.OperatingState) return;
+            siteVisual.material = openMaterial;
         }
 
-        private void AvailabilityToggle()
+        private void OnFacilityOperating(FiniteStateManager manager)
         {
-            state = (state == States.Closed)? States.Open : States.Closed;
+            siteVisual.material = openMaterial;
+        }
+
+        private void OnFacilityClosed(FiniteStateManager manager)
+        {
+            siteVisual.material = closedMaterial;
         }
     }
 }

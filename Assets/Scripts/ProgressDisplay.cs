@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
+using FacilityRelated;
 
 namespace ToolTesting
 {
@@ -14,7 +15,7 @@ namespace ToolTesting
         }
         public void UpdateProgressbar()
         {
-            progressDisplayImage.fillAmount = Mathf.Clamp((float)facility.currentValue/(float)facility.valueMax,0,1f);
+            progressDisplayImage.fillAmount = Mathf.Clamp((float)facility.CurrentValue/(float)facility.ValueMax,0,1f);
         }
 
     }
