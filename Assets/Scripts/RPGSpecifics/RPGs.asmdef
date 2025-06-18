@@ -1,0 +1,17 @@
+{
+    "name": "RPGs",
+    "rootNamespace": "",
+    "references": [
+        "GUID:fa769a9e403c04041acfb81b0f4f439e",
+        "GUID:894e60b6d8afe7d40b6539bb82975541"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

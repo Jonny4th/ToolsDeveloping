@@ -1,0 +1,20 @@
+{
+    "name": "Tool.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:9eb67bee8d0a3aa43be2d1dcffcaed16",
+        "GUID:3ae999bae89ffe442818b6c24de2351d",
+        "GUID:e9d0ef0ae50b8604aa5599cd9cd45718"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

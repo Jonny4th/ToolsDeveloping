@@ -1201,7 +1201,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2985538686373376151, guid: f9f0de1def1c6aa4184a7d04dc51fcf0, type: 3}
       propertyPath: m_Name
-      value: Interactive Site (2)
+      value: Interactive Site (4)
       objectReference: {fileID: 0}
     - target: {fileID: 4705570073869397651, guid: f9f0de1def1c6aa4184a7d04dc51fcf0, type: 3}
       propertyPath: m_RootOrder
@@ -1711,7 +1711,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2985538686373376151, guid: f9f0de1def1c6aa4184a7d04dc51fcf0, type: 3}
       propertyPath: m_Name
-      value: Interactive Site (1)
+      value: Interactive Site (3)
       objectReference: {fileID: 0}
     - target: {fileID: 4705570073869397651, guid: f9f0de1def1c6aa4184a7d04dc51fcf0, type: 3}
       propertyPath: m_RootOrder

@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 2fb1037d7ebe7a74bb497a071ae8769d
+  m_SerializeEntries:
+  - m_GUID: 6ab70aee4d56447429c680537fbf93ed
+    m_Address: Assets/Externals/TextMesh Pro/Fonts
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fundamentals
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 731f1baa9d144a9897cb1d341c2092b8
+    m_Address: Fonts & Materials
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fundamentals
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9f693669af91aa45ad615fc681ed29f
+    m_Address: Assets/Externals/TextMesh Pro/Shaders
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Fundamentals
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 92d603847a6298d4cbc61d5c56e1711d, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c5de82be8e149434f8f2227736126379, type: 2}
+    - {fileID: 11400000, guid: 6936c93fcc76c294d862b1f963dedc13, type: 2}
