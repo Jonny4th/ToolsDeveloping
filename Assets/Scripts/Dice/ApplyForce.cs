@@ -23,7 +23,7 @@ public class ApplyForce : MonoBehaviour
     public void _ApplyForce()
     {
         Rigidbody rigidbody = GetComponent<Rigidbody>();
-        if (rigidbody.velocity.magnitude == 0)
+        if (rigidbody.linearVelocity.magnitude == 0)
         {
             rigidbody.AddForce(Vector3.up  * forceMagnitude, ForceMode.Acceleration);
             rigidbody.AddTorque(RandomVector3() * forceMagnitude);
