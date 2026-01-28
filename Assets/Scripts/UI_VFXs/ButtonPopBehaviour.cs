@@ -6,7 +6,7 @@ public class ButtonPopBehaviour : MonoBehaviour
 {
     public Button Button;
 
-    [SerializeField] private float maxScale;
+    [SerializeField] private float scaleFactor;
 
     [Tooltip("+ and - degree of rotation.")]
     [Range(0f, 90f)]
@@ -16,7 +16,6 @@ public class ButtonPopBehaviour : MonoBehaviour
     [SerializeField] private float vfxDuration;
 
     private Coroutine vfxProcess;
-    private Transform subjectTransform;
 
     private Vector3 originalScale;
     private Quaternion originalOrientation;
@@ -24,9 +23,8 @@ public class ButtonPopBehaviour : MonoBehaviour
     private void Start()
     {
         Button.onClick.AddListener(Pop);
-        subjectTransform = Button.transform;
-        originalScale = subjectTransform.localScale;
-        originalOrientation = subjectTransform.localRotation;
+        originalScale = transform.localScale;
+        originalOrientation = transform.localRotation;
     }
 
     private void Pop()
@@ -50,19 +48,18 @@ public class ButtonPopBehaviour : MonoBehaviour
             var normalizedTime = (Time.time - startTime) / vfxDuration;
             var curveEvaluation = vfxCurve.Evaluate(normalizedTime);
 
-            var evaluatedScale = Mathf.Lerp(1, maxScale, curveEvaluation);
-            var newScale = evaluatedScale * originalScale;
-            subjectTransform.localScale = newScale;
+            var maxScale = scaleFactor * originalScale;
+            var newScale = Vector3.Lerp(originalScale, maxScale, curveEvaluation);
+            transform.localScale = newScale;
 
-            var evaluatedAngle = Mathf.Lerp(0, maxAngle, curveEvaluation);
-            var rotation = Quaternion.AngleAxis(evaluatedAngle, subjectTransform.forward);
-            var newOrientation = originalOrientation * rotation;
-            subjectTransform.localRotation = newOrientation;
+            var orientationAtMaximum = Quaternion.AngleAxis(maxAngle, transform.forward);
+            var newOrientation = Quaternion.Lerp(originalOrientation, orientationAtMaximum, curveEvaluation);
+            transform.localRotation = newOrientation;
 
             yield return null;
         }
 
-        subjectTransform.localScale = originalScale;
-        subjectTransform.localRotation = originalOrientation;
+        transform.localScale = originalScale;
+        transform.localRotation = originalOrientation;
     }
 }
