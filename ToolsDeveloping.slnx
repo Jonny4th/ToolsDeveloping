@@ -1,0 +1,19 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="Tools.UI.Vfxs.csproj" />
+  <Project Path="CityBuildingSpecifics.csproj" />
+  <Project Path="MyTool.ScrollUI.csproj" />
+  <Project Path="Utilities.TimeRelated.csproj" />
+  <Project Path="Utilities.General.csproj" />
+  <Project Path="MyTool.ScriptableVariables.csproj" />
+  <Project Path="RPGs.csproj" />
+  <Project Path="DesignPatterns.csproj" />
+  <Project Path="Tool.Editor.csproj" />
+  <Project Path="Utilities.UI.csproj" />
+  <Project Path="Tools.Addressables.csproj" />
+  <Project Path="ToolDev.UI.Drag.csproj" />
+  <Project Path="ToolDev.Draw.csproj" />
+  <Project Path="ToolDevelopment.UnityAPI.csproj" />
+  <Project Path="DiceSpecifics.csproj" />
+  <Project Path="PhysicsRelated.csproj" />
+</Solution>
